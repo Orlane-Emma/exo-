@@ -1,0 +1,204 @@
+$categorie = $_POST['categorie'];
+$sous_categorie = $_POST['sous_categorie'];
+
+if ($conn) {
+    $categories=mysqli_real_escape_string($conn, $categorie);
+    $sous_categories=mysqli_real_escape_string($conn, $sous_categorie);
+
+    $requete = "SELECT image, titre, prix, categorie, sous_categorie, description, auteur FROM livres WHERE categorie='$categories' AND sous_categorie='$sous_categories'";
+    $resultat = mysqli_query($conn, $requete);
+
+    echo "<div class='books-grid'>";
+        if (mysqli_num_rows($resultat) > 0) {
+            while ($ligne = mysqli_fetch_array($resultat)) {
+                echo "<div class='book-item' data-title='" . strtolower($ligne['titre']) . "' data-author='" . strtolower($ligne['auteur']) . "'>";
+                if ($ligne['image']) {
+                    $finfo = new finfo(FILEINFO_MIME_TYPE);
+                    $mimeType = $finfo->buffer($ligne['image']);
+                    echo "<img src='data:$mimeType;base64," . base64_encode($ligne['image']) . "' alt='Livre' class='book-image'>";
+                } else {
+                    echo "<img src='images/default-book.png' alt='Default Image' class='book-image'>";
+                }
+                echo "<div class='book-info'>";
+                echo "<h2><strong>" .$ligne['titre']. "</strong></h2>";
+                echo "<strong>" .$ligne['auteur']. "</strong>";
+                echo "<p>" .$ligne['description']. "</p>";
+                echo "<h3>" .$ligne['prix']. " €</h3>";
+                echo  "<div class='center'><div class='bouton'><a href='#'>En savoir plus</a></div></div>";
+                echo "</div>";
+                echo "</div>";
+            }
+        } else {
+            echo "<p style='color:black'>Aucun livre trouvé pour ".$sous_categories." dans ".$categories.".</p>";
+        }
+    echo "</div>";
+    
+    mysqli_close($conn);
+} else {
+    echo "Erreur de connexion à la base de données:" .$e. "";
+}
+include('footer.html');
+?>
+<?php
+        include('db.php'); // Connexion à la base de données   
+
+        // Si la connexion à la base est opérationnelle
+        if ($conn) {
+            if ($_SERVER['REQUEST_METHOD'] === "POST") {
+                // Variables des informations envoyées via le formulaire
+                $titre = $_POST["titre"];
+                $category = $_POST["category"];
+                $subcategory = $_POST["subcategory"];
+                $isbn = $_POST["isbn"];
+                $auteur = $_POST["auteur"];
+                $editeur = $_POST["editeur"];
+                $prix = $_POST["prix"];
+                $stock = $_POST["stock"];
+                $description = $_POST["description"];
+                
+                // Vérifier si un fichier image est téléchargé
+                if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+                    $images = file_get_contents($_FILES['image']['tmp_name']); // Lire le fichier image
+                    $images = mysqli_real_escape_string($conn, $images);    
+                }
+
+                // Requête SQL
+                $requete = "INSERT INTO livres (titre, categorie, sous_categorie, image, isbn, auteur, editeur, prix, stock, description) 
+                            VALUES ('$titre', '$category', '$subcategory', '$images', '$isbn', '$auteur', '$editeur', '$prix', '$stock', '$description')";
+                $resultat = mysqli_query($conn, $requete);
+                if ($resultat) {
+                    echo "<h1 style='color:green;'>Ajout terminé</h1><br><br><br>";
+                } else {
+                    echo "<h1 style='color:red;'>Erreur lors de l'insertion</h1><br>
+                        Erreur : " . mysqli_error($conn) . "<br><br>";
+                }
+                
+            }
+
+            // Fermeture de la connexion à la base de données
+            mysqli_close($conn);
+        }
+
+        ?>
+<?php
+            include('db.php'); // Connexion à la base de données   
+
+            // Si la connexion à la base est opérationnelle
+            if ($conn) {
+                if ($_SERVER['REQUEST_METHOD'] === "POST") {
+                    // Variables des informations envoyées via le formulaire
+                    $adminprenom = $_POST["adminprenom"];
+                    $adminnom = $_POST["adminnom"];
+                    $adminemail = $_POST["adminemail"];
+                    $adminpassword = password_hash($_POST["adminassword"], PASSWORD_ARGON2I);
+
+                    $sql = "SELECT * FROM administrateurs WHERE email = '$adminemail'";
+                    $result= mysqli_query($conn, $sql);  // Préparation de la requête
+
+                    if (mysqli_num_rows($result) > 0) {
+                        echo"<h1 style='color:red;'>Cet email est déjà utilisé. Veuillez choisir un autre.</h1><br><br><br>";
+                    } else {
+                        // Requête SQL
+                        $requete = "INSERT INTO administrateurs (nom, prenom, email, mdp, role) 
+                                    VALUES ('$adminprenom', '$adminnom', '$adminemail', '$adminpassword', 'admin')";
+                        $resultat = mysqli_query($conn, $requete);
+                        if ($resultat) {
+                            echo "<h1 style='color:green;'>Ajout terminé</h1><br><br><br>";
+                        } else {
+                            echo "<h1 style='color:red;'>Erreur lors de l'insertion</h1><br>
+                                Erreur : " . mysqli_error($conn) . "<br><br>";
+                        }
+                    }
+                    
+                }
+                // Fermeture de la connexion à la base de données
+                mysqli_close($conn);
+            }
+
+            ?>
+
+
+
+<?php
+// Activer l'affichage des erreurs pour le débogage
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+session_start();
+include 'db.php';  // Connexion à la base de données
+
+// Si le formulaire est soumis
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Récupérer les données du formulaire
+    $nom = $_POST['nom'];
+    $prenom = $_POST['prenom'];
+    $email = $_POST['email'];
+    $mot_de_passe = $_POST['mot_de_passe'];  // Assurez-vous que le nom de champ correspond
+
+    // Hachage du mot de passe avant de l'insérer dans la base de données
+    $mot_de_passe_hash = password_hash($mot_de_passe, PASSWORD_DEFAULT);
+
+    // Vérification si l'email existe déjà dans la base de données
+    $sql = "SELECT * FROM clients WHERE email = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    // Si l'email existe déjà
+    if ($result->num_rows > 0) {
+        $erreur = "Cet email est déjà utilisé. Veuillez choisir un autre.";
+    } else {
+        // Insertion des nouvelles informations dans la base de données
+        $sql = "INSERT INTO clients (nom, prenom, email, mdp) VALUES (?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssss", $nom, $prenom, $email, $mot_de_passe_hash);
+
+        // Exécution de l'insertion
+        if ($stmt->execute()) {
+            // Redirection vers la page de connexion après une inscription réussie
+            header("Location: connecter.php");
+            exit();
+        } else {
+            // Si une erreur survient lors de l'insertion
+            $erreur = "Erreur lors de la création du compte. Veuillez réessayer.";
+        }
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Inscription - La Plume</title>
+    <link rel="stylesheet" href="css/style1.css"> <!-- Lien vers le fichier CSS -->
+</head>
+<body>
+    <div class="container">
+        <h2>Créer un compte</h2>
+
+        <!-- Affichage de l'erreur si elle existe -->
+        <?php if (isset($erreur)) echo "<p class='error-message'>$erreur</p>"; ?>
+
+        <!-- Formulaire d'inscription -->
+        <form method="post" action="creercompte.php">
+            <label for="nom">Nom:</label>
+            <input type="text" name="nom" id="nom" required>
+
+            <label for="prenom">Prénom:</label>
+            <input type="text" name="prenom" id="prenom" required>
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required>
+
+            <label for="mot_de_passe">Mot de passe:</label>
+            <input type="password" name="mot_de_passe" id="mot_de_passe" required>
+
+            <button type="submit">S'inscrire</button>
+        </form>
+
+        <p>Déjà inscrit ? <a href="connecter.php">Se connecter</a></p> <!-- Lien vers la page de connexion -->
+    </div>
+</body>
+</html>

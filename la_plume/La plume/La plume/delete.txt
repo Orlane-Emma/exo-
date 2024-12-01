@@ -1,0 +1,24 @@
+<?php
+include('db.php');
+// Gestion de la suppression
+if (isset($_POST['delete'])) {
+    $id_livre = intval($_POST['id_livre']); // Sécuriser l'ID récupéré
+    $requete = "DELETE FROM livres WHERE id_livre = $id_livre";
+
+    try {
+        $resultat = mysqli_query($conn, $requete);
+        if ($resultat) {
+            header("Location: superadmin.php"); // Rediriger vers la même page
+            exit();
+        } else {
+            echo "<h3 style='color: red;'>Erreur lors de la suppression.</h3>";
+        }
+    } catch (Exception $e) {
+        echo "<h3 style='color: red;'>Erreur : " .$e. "</h3>";
+    }
+    
+}  
+
+    mysqli_close($conn);
+
+?>

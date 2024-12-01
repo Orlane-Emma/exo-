@@ -1,0 +1,84 @@
+/* Style global pour le body */
+body {
+    font-family: Arial, sans-serif; /* Police de caractères */
+    background-color: #f0f8ff; /* Fond bleu clair */
+    color: #333; /* Couleur du texte */
+    display: flex;
+    justify-content: center; /* Centrage horizontal */
+    align-items: center; /* Centrage vertical */
+    height: 100vh; /* Remplir toute la hauteur de la fenêtre */
+    margin: 0; /* Suppression des marges par défaut */
+}
+
+/* Style pour le container principal */
+.container {
+    background-color: #ffffff; /* Fond blanc pour le formulaire */
+    padding: 20px;
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre douce autour du formulaire */
+    max-width: 400px; /* Largeur maximale */
+    width: 100%; /* Largeur responsive */
+    text-align: center; /* Centrer le texte */
+}
+
+/* Style pour le titre (h2) */
+h2 {
+    color: #1e90ff; /* Bleu clair */
+    margin-bottom: 20px; /* Espacement en bas */
+    font-size: 24px; /* Taille du texte */
+}
+
+/* Style pour les labels des champs de formulaire */
+label {
+    display: block;
+    margin-top: 10px;
+    color: #1e90ff; /* Bleu clair */
+    font-weight: bold; /* Gras pour les labels */
+}
+
+/* Style pour les champs de saisie (email, mot de passe) */
+input[type="email"],
+input[type="password"],
+input[type="text"] { /* Ajout d'un type "text" pour nom et prénom */
+    width: calc(100% - 20px); /* Largeur du champ avec padding */
+    padding: 10px;
+    margin: 8px 0; /* Espacement vertical entre les champs */
+    border: 1px solid #1e90ff; /* Bordure bleue */
+    border-radius: 4px; /* Coins arrondis pour les champs */
+    box-sizing: border-box; /* Inclure le padding dans la largeur totale */
+}
+
+/* Style pour le bouton de soumission */
+button {
+    background-color: #1e90ff; /* Bleu clair */
+    color: white; /* Texte blanc */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px; /* Coins arrondis */
+    cursor: pointer; /* Curseur en forme de main */
+    font-weight: bold; /* Texte en gras */
+    width: 100%; /* Largeur du bouton à 100% */
+    transition: background-color 0.3s ease; /* Effet de transition lors du survol */
+}
+
+/* Changement de couleur du bouton au survol */
+button:hover {
+    background-color: #1c86ee; /* Couleur plus foncée de bleu au survol */
+}
+
+/* Style des liens dans les paragraphes */
+p a {
+    color: #1e90ff; /* Bleu clair */
+    text-decoration: none; /* Enlever la soulignure */
+}
+
+p a:hover {
+    text-decoration: underline; /* Souligner au survol */
+}
+
+/* Style des messages d'erreur */
+.error-message {
+    color: red; /* Texte rouge pour les erreurs */
+    margin-bottom: 15px; /* Espacement sous le message d'erreur */
+    font-size: 14px; /* Taille de police réduite pour l'erreur */
+}

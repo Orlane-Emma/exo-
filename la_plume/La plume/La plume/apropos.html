@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A propos</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #005477;
+            
+        }
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+        .company-description {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+                      
+                      <div class="header_section">
+                        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                            <div class="container-fluid">
+                                <a class="logo" href="index.html">
+                                    <img src="images/logo.png" alt="Logo">
+                                </a>
+                                <a class="site-name" href="index.html">La Plume</a>
+                                
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                
+                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                    <ul class="navbar-nav me-auto ">
+                                     <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="thrillerDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Thriller
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="thrillerDropdown">
+                                            <li><a class="dropdown-item" href="livre.php?categorie=Thriller&sous_categorie=Thriller psychologique">Thriller psychologique</a></li>
+                                            <li><a class="dropdown-item" href="livre.php?categorie=Thriller&sous_categorie=Thriller policier">Thriller policier</a></li>
+                                            <li><a class="dropdown-item" href="livre.php?categorie=Thriller&sous_categorie=Thriller juridique">Thriller juridique</a></li>
+                                            <li><a class="dropdown-item" href="livre.php?categorie=Thriller&sous_categorie=Thriller d'espionnage">Thriller d'espionnage</a></li>
+                                        </ul>
+                                    </li>
+                        
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="romanceDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Romance
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="romanceDropdown">
+                                            <li><a class="dropdown-item" href="livre.php?categorie=Romance&sous_categorie=Romance contemporaine">Romance contemporaine</a></li>
+                                            <li><a class="dropdown-item" href="livre.php?categorie=Romance&sous_categorie=Romance fantastique/paranormale">Romance fantastique/paranormale</a></li>
+                                            <li><a class="dropdown-item" href="livre.php?categorie=Romance&sous_categorie=Comédie romantique">Comédie romantique</a></li>
+                                            <li><a class="dropdown-item" href="livre.php?categorie=Romance&sous_categorie=Romance dramatique">Romance dramatique</a></li>
+                                        </ul>
+                                    </li>
+                        
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="policiersDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Roman policier
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="policiersDropdown">
+                                            <li><a class="dropdown-item" href="livre.php?categorie=Roman policier&sous_categorie=Roman noir">Roman noir</a></li>
+                                            <li><a class="dropdown-item" href="livre.php?categorie=Roman policier&sous_categorie=Roman à énigme">Roman à énigme</a></li>
+                                            <li><a class="dropdown-item" href="livre.php?categorie=Roman policier&sous_categorie=Polar">Polar</a></li>
+                                            <li><a class="dropdown-item" href="livre.php?categorie=Roman policier&sous_categorie=True crime">True crime (documentaire)</a></li>
+                                        </ul>
+                                    </li>
+                        
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="comediesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Comédie
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="comediesDropdown">
+                                            <li><a class="dropdown-item" href="livre.php?categorie=Comédie&sous_categorie=Comédie littéraire">Comédie littéraire</a></li>
+                                            <li><a class="dropdown-item" href="livre.php?categorie=Comédie&sous_categorie=Comédie romantique">Comédie romantique</a></li>
+                                            <li><a class="dropdown-item" href="livre.php?categorie=Comédie&sous_categorie=Comédie noire">Comédie noire</a></li>
+                                            <li><a class="dropdown-item" href="livre.php?categorie=Comédie&sous_categorie=Comédie dramatique">Comédie dramatique</a></li>
+                                        </ul>
+                                    </li>
+                        
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="sciFiDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Science-fiction
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="sciFiDropdown">
+                                            <li><a class="dropdown-item" href="livre.php?categorie=Science-fiction&sous_categorie=Science-fiction dystopique">Science-fiction dystopique</a></li>
+                                            <li><a class="dropdown-item" href="livre.php?categorie=Science-fiction&sous_categorie=Space opera">Space opera</a></li>
+                                            <li><a class="dropdown-item" href="livre.php?categorie=Science-fiction&sous_categorie=Cyberpunk">Cyberpunk</a></li>
+                                            <li><a class="dropdown-item" href="livre.php?categorie=Science-fiction&sous_categorie=Science-fiction apocalyptique/post-apocalyptique">Science-fiction apocalyptique/post-apocalyptique</a></li>
+                                        </ul>
+                                    </li>
+                        
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="poetryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Poésie
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="poetryDropdown">
+                                            <li><a class="dropdown-item" href="livre.php?categorie=Poésie&sous_categorie=Poésie lyrique">Poésie lyrique</a></li>
+                                            <li><a class="dropdown-item" href="livre.php?categorie=Poésie&sous_categorie=Poésie épique">Poésie épique</a></li>
+                                            <li><a class="dropdown-item" href="livre.php?categorie=Poésie&sous_categorie=Poésie engagée">Poésie engagée</a></li>
+                                            <li><a class="dropdown-item" href="livre.php?categorie=Poésie&sous_categorie=Poésie satirique">Poésie satirique</a></li>
+                                        </ul>
+                                    </li>
+                        
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="recitDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Récit
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="recitDropdown">
+                                            <li><a class="dropdown-item" href="livre.php?categorie=Récit&sous_categorie=Autobiographie">Autobiographie</a></li>
+                                            <li><a class="dropdown-item" href="livre.php?categorie=Récit&sous_categorie=Biographie">Biographie</a></li>
+                                            <li><a class="dropdown-item" href="livre.php?categorie=Récit&sous_categorie=Mémoires">Mémoires</a></li>
+                                            <li><a class="dropdown-item" href="livre.php?categorie=Récit&sous_categorie=Journal intime">Journal intime</a></li>
+                                        </ul>
+                                    </li>
+                        
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="mangaDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Manga
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="mangaDropdown">
+                                            <li><a class="dropdown-item" href="livre.php?categorie=Manga&sous_categorie=Shōnen">Shōnen</a></li>
+                                            <li><a class="dropdown-item" href="livre.php?categorie=Manga&sous_categorie=Shōjo">Shōjo</a></li>
+                                            <li><a class="dropdown-item" href="livre.php?categorie=Manga&sous_categorie=Seinen">Seinen</a></li>
+                                            <li><a class="dropdown-item" href="livre.php?categorie=Manga&sous_categorie=Isekai">Isekai</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                 <div class="search_icon"><a href="contact.html"><img src="images/eye-icon.png"><span class="padding_left_15">Contact</span></a></div>
+                                 <div class="search_icon"><a href="apropos.html"><img src="images/search-icon.png"><span class="padding_left_15">A propos</span></a></div>
+                                 <div class="search_icon"><a href="connecter.php"><img src="images/user-icon.png"><span class="padding_left_15">Se connecter</span></a></div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                
+                    <!-- Bootstrap JS (important!) -->
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+                
+                
+                
+
+
+                         
+                              <div class="content"> 
+                                <div class="company-description"> 
+                                    <h2>Notre Histoire</h2> 
+                                    <p>Fondée en 2023, La plume est née de la passion de ses créateurs pour la littérature et l’innovation dans l’accès aux livres.<br><br>
+                                        L’aventure a commencé avec l’envie de rassembler une sélection unique d'ouvrages en tous genres, tout en offrant une expérience d’achat en ligne intuitive et agréable. Depuis ses débuts, La plume s’est attachée à réinventer la manière dont les lecteurs trouvent, découvrent et achètent leurs livres préférés, en se concentrant sur des services personnalisés et des recommandations inspirantes. <br><br>
+                                        Aujourd’hui, La plume est bien plus qu’une librairie en ligne : c’est une communauté d’amoureux de la lecture, qui partagent un engagement envers la culture et le savoir. Nous sommes fiers de notre parcours, des liens que nous créons avec nos lecteurs, et de notre contribution à la promotion de la lecture. <br><br>
+                                    </p> 
+                                    <h2>Nos Valeurs</h2>
+                                     <p>Chez La plume, nos valeurs sont au cœur de notre identité et influencent chacune de nos décisions :<br><br>
+                                         <b>• Passion pour la lecture : </b>Nous croyons au pouvoir des livres pour inspirer, émouvoir et transformer. Notre mission est de faciliter l'accès à des ouvrages de qualité, sélectionnés avec soin.<br><br>
+                                         <b> • Excellence du service :</b> Offrir une expérience utilisateur exceptionnelle est notre priorité. Nous mettons un point d’honneur à proposer un service client réactif et des services personnalisés pour accompagner chaque lecteur.<br><br>
+                                         <b> • Engagement envers la diversité :</b> Nous tenons à proposer une collection de livres riche et variée, qui célèbre toutes les cultures, tous les genres littéraires et tous les horizons.<br><br>
+
+                                        </p> 
+                                     <h2>Notre Équipe</h2> 
+                                <p>La force de La plume réside dans son équipe passionnée de lecteurs, de libraires et d'experts en technologie, unis par l'envie de partager leur amour de la littérature.
+                                    Depuis la sélection des livres jusqu’à l'expérience client, chaque membre de notre équipe contribue à transformer la manière dont nos clients explorent et achètent des livres en ligne.<br><br> 
+                                    Ensemble, nous formons bien plus qu’une librairie : nous sommes une communauté de passionnés, engagée à rendre la lecture accessible et inspirante pour tous.<br>
+                                    Rejoignez-nous dans notre aventure pour faire de la lecture un plaisir quotidien et un vecteur de découverte inépuisable !
+                                    </p> 
+                                    </div> 
+                                </div>
+
+
+                                
+                                 
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.0.0.min.js"></script>
+    <script src="js/plugin.js"></script>
+                             </body> 
+                             </html>
+
+                             
